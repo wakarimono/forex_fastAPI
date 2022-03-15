@@ -1,11 +1,13 @@
 from fastapi import FastAPI
-from scraper import Scraper
+from scraper import Scraperates
 
 app = FastAPI()
 
-quotes = Scraper()
+currencies = Scraperates()
 
 
-@app.get("/{cat}")
-async def read_item(cat):
-    return quotes.scrapedata(cat)
+@app.get("/spot")
+async def read_item():
+    return currencies.scrapedatarates()
+
+
